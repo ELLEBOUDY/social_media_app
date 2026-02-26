@@ -51,7 +51,7 @@
     </VBox>
 
     <VBox fx:id="contentArea" HBox.hgrow="ALWAYS" style="-fx-background-color: transparent;">
-        <fx:include source="NewsFeed.fxml" />
+        <fx:include source="newsfeed.fxml" />
     </VBox>
 
 </HBox>
