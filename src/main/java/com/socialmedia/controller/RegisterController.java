@@ -23,9 +23,30 @@ public class RegisterController {
         String email = emailField.getText();
         String password = passwordField.getText();
 
+        if (name == null || name.trim().isEmpty()) {
+            messageLabel.setText("Name cannot be empty!");
+            return;
+        }
+        if (email == null || email.trim().isEmpty()) {
+            messageLabel.setText("Email cannot be empty!");
+            return;
+        }
+        if (!email.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+            messageLabel.setText("Invalid email format!");
+            return;
+        }
+        if (password == null || password.trim().isEmpty()) {
+            messageLabel.setText("Password cannot be empty!");
+            return;
+        }
+
         try {
             String hashedPassword = PasswordUtil.hashPassword(password);
             userDAO.registerUser(name, email, hashedPassword);
+            messageLabel.setText("Registration successful! You can now login.");
+            nameField.clear();
+            emailField.clear();
+            passwordField.clear();
         } catch (Exception e) {
             messageLabel.setText("Error: " + e.getMessage());
         }

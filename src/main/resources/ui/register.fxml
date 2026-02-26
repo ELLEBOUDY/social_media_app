@@ -59,7 +59,7 @@
                                 style="-fx-background-color: transparent; -fx-border-color: #6e2da1; -fx-border-radius: 25; -fx-text-fill: #6e2da1; -fx-cursor: hand;" />
                     </HBox>
 
-                    <Label fx:id="messageLabel" textFill="green" style="-fx-font-size: 13px; -fx-font-weight: bold;" />
+                    <Label fx:id="messageLabel" textFill="red" style="-fx-font-size: 13px; -fx-font-weight: bold;" />
                 </VBox>
             </children>
         </HBox>
