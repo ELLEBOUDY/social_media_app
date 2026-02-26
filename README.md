@@ -52,5 +52,3 @@
 
 ---
 
-## 👤 مطور المشروع
-**Mohamed (ELLEBOUDY)** تواصل معي عبر [GitHub Profile](https://github.com/ELLEBOUDY)
