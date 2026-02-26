@@ -2,22 +2,61 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.Insets?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.socialmedia.controller.FriendRequestController"
-            stylesheets="@styles.css">
-    <children>
-        <Label text="Friend Requests" layoutX="20" layoutY="20" style="-fx-font-size: 20px;"/>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.socialmedia.controller.FriendRequestController"
+      spacing="25.0" style="-fx-background-color: transparent;">
 
-        <ListView fx:id="requestsListView" layoutX="20" layoutY="60" prefWidth="400" prefHeight="200"/>
+    <padding>
+        <Insets top="20" right="40" bottom="20" left="40"/>
+    </padding>
 
-        <TextField fx:id="receiverField" layoutX="20" layoutY="240" promptText="Enter ِA Name"/>
+    <Label text="Friend Requests" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
 
-        <Button text="Accept" layoutX="20" layoutY="280" onAction="#handleAccept"/>
-        <Button text="Reject" layoutX="100" layoutY="280" onAction="#handleReject"/>
-        <Button text="Send Request" layoutX="180" layoutY="280" onAction="#handleSendRequest"/>
-        <Button text="Back to Menu" layoutX="300" layoutY="280" onAction="#goToMenu"/>
+    <HBox spacing="30.0" VBox.vgrow="ALWAYS">
 
-        <Label fx:id="messageLabel" layoutX="20" layoutY="320" textFill="red"/>
-    </children>
-</AnchorPane>
+        <VBox spacing="15.0" HBox.hgrow="ALWAYS" style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 25;">
+            <effect>
+                <DropShadow color="#00000008" radius="15" offsetY="5" />
+            </effect>
+
+            <Label text="Incoming Requests" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #6e2da1;"/>
+
+            <ListView fx:id="requestsListView" VBox.vgrow="ALWAYS"
+                      style="-fx-background-color: #f8f9fa; -fx-background-radius: 15; -fx-padding: 5; -fx-border-color: #eee; -fx-border-radius: 15; -fx-selection-bar: #6e2da120;"/>
+
+            <HBox spacing="15.0" alignment="CENTER">
+                <Button text="Accept Request" onAction="#handleAccept"
+                        style="-fx-background-color: #6e2da1; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 12; -fx-padding: 10 20; -fx-cursor: hand;"/>
+
+                <Button text="Reject" onAction="#handleReject"
+                        style="-fx-background-color: #ffeded; -fx-text-fill: #e53e3e; -fx-font-weight: bold; -fx-background-radius: 12; -fx-padding: 10 20; -fx-cursor: hand;"/>
+            </HBox>
+        </VBox>
+
+        <VBox spacing="20.0" prefWidth="350.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 25;">
+            <effect>
+                <DropShadow color="#00000008" radius="15" offsetY="5" />
+            </effect>
+
+            <Label text="Send New Request" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #6e2da1;"/>
+
+            <VBox spacing="10.0">
+                <Label text="Enter Username:" style="-fx-text-fill: #666;"/>
+                <TextField fx:id="receiverField" promptText="Who are you looking for?"
+                           style="-fx-background-color: #f1f4f9; -fx-background-radius: 12; -fx-padding: 12; -fx-border-width: 0;"/>
+            </VBox>
+
+            <Button text="Send Friend Request" onAction="#handleSendRequest" maxWidth="Infinity"
+                    style="-fx-background-color: #f1f4f9; -fx-text-fill: #6e2da1; -fx-border-color: #6e2da1; -fx-border-radius: 12; -fx-background-radius: 12; -fx-font-weight: bold; -fx-padding: 12; -fx-cursor: hand;"/>
+
+            <Region VBox.vgrow="ALWAYS" />
+
+            <Label fx:id="messageLabel" wrapText="true" alignment="CENTER" maxWidth="Infinity"
+                   style="-fx-font-weight: bold; -fx-text-fill: #e53e3e;"/>
+        </VBox>
+    </HBox>
+
+</VBox>

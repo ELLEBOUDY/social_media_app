@@ -2,38 +2,73 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.Insets?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.socialmedia.controller.NewsFeedController"
-            stylesheets="@styles.css"
-            styleClass="root-pane">
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.socialmedia.controller.NewsFeedController"
+           prefHeight="700.0" prefWidth="1100.0"
+           style="-fx-background-color: #f0f2f5;
+                  -fx-accent: #6e2da1;
+                  -fx-focus-color: transparent;
+                  -fx-text-background-color: #333333;"> <AnchorPane>
+<!--    <Button text="← Back to Menu" onAction="#goToMenu"-->
+<!--            AnchorPane.topAnchor="20.0" AnchorPane.leftAnchor="20.0"-->
+<!--            style="-fx-background-color: white; -fx-background-radius: 15; -fx-text-fill: #6e2da1; -fx-font-weight: bold; -fx-cursor: hand; -fx-border-color: #6e2da1; -fx-border-radius: 15;">-->
+<!--        <effect><DropShadow color="#00000010" radius="5" /></effect>-->
+<!--    </Button>-->
 
-    <children>
-        <VBox spacing="15" layoutX="20" layoutY="20" prefWidth="560" prefHeight="750">
+    <VBox alignment="TOP_CENTER" spacing="20.0"
+          AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="20.0">
+        <padding><Insets bottom="30.0" /></padding>
 
-            <Label text="News Feed" styleClass="title-label"/>
+        <Label text="News Feed" style="-fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: #6e2da1; " />
 
-            <TextArea fx:id="postContentField" prefWidth="540" prefHeight="100" promptText="What's on your mind?" styleClass="input-field"/>
+        <VBox spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 20;">
+            <effect><DropShadow color="#00000010" radius="15" offsetY="5" /></effect>
+            <TextArea fx:id="postContentField" prefHeight="80.0" promptText="What's on your mind?"
+                      wrapText="true"
+                      style="-fx-background-color: #f1f4f9; -fx-control-inner-background: #f1f4f9; -fx-background-radius: 15; -fx-padding: 10; -fx-border-width: 0; -fx-text-fill: #333;"/>
 
-            <HBox spacing="10">
-                <ComboBox fx:id="privacyComboBox" prefWidth="200"/>
-                <Button text="Create Post" onAction="#handleCreatePost" styleClass="primary-button"/>
-                <Button text="Upload Image" onAction="#handleUploadImage" styleClass="secondary-button"/>
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+                <ComboBox fx:id="privacyComboBox" prefWidth="130.0" style="-fx-background-radius: 10;"/>
+                <Button text="📷 Image" onAction="#handleUploadImage"
+                        style="-fx-background-color: #e7f3ff; -fx-text-fill: #1877f2; -fx-font-weight: bold; -fx-background-radius: 10; -fx-cursor: hand;"/>
+                <Region HBox.hgrow="ALWAYS" />
+                <Button text="Post Now" onAction="#handleCreatePost"
+                        prefWidth="120.0"
+                        style="-fx-background-color: #6e2da1; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 20; -fx-cursor: hand;"/>
             </HBox>
-
-            <ListView fx:id="postsListView" prefWidth="540" prefHeight="300" onMouseClicked="#handlePostSelection"/>
-
-            <HBox spacing="10">
-                <Button text="Like/Unlike" onAction="#handleLike" styleClass="primary-button"/>
-                <Label fx:id="likesCountLabel" text="Likes: 0"/>
-            </HBox>
-
-            <TextArea fx:id="commentField" prefWidth="540" prefHeight="60" promptText="Write a comment..." styleClass="input-field"/>
-            <Button text="Add Comment" onAction="#handleAddComment" styleClass="secondary-button"/>
-            <ListView fx:id="commentsListView" prefWidth="540" prefHeight="200"/>
-
-            <Button text="Back to Menu" onAction="#goToMenu" styleClass="secondary-button"/>
-            <Label fx:id="messageLabel" styleClass="error-label"/>
         </VBox>
-    </children>
+
+        <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+            <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                <Label text="Recent Posts" style="-fx-font-weight: bold; -fx-text-fill: #666;"/>
+                <ListView fx:id="postsListView" onMouseClicked="#handlePostSelection"
+                          prefHeight="400.0"
+                          style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 10; -fx-border-color: #ddd; -fx-border-radius: 20;
+                                     -fx-selection-bar: #6e2da125; -fx-selection-bar-non-focused: #6e2da110;
+                                     -fx-cell-focus-inner-border: transparent;"/>
+
+                <HBox alignment="CENTER_LEFT" spacing="15.0" style="-fx-padding: 5;">
+                    <Button text="❤ Like" onAction="#handleLike"
+                            style="-fx-background-color: #fce4ec; -fx-text-fill: #d81b60; -fx-font-weight: bold; -fx-background-radius: 15; -fx-cursor: hand;"/>
+                    <Label fx:id="likesCountLabel" text="Likes: 0" style="-fx-font-weight: bold; -fx-text-fill: #666;"/>
+                    <Label fx:id="messageLabel" textFill="red" style="-fx-font-weight: bold;"/>
+                </HBox>
+            </VBox>
+
+            <VBox spacing="10.0" prefWidth="350.0">
+                <Label text="Comments" style="-fx-font-weight: bold; -fx-text-fill: #666;"/>
+                <ListView fx:id="commentsListView" prefHeight="300.0"
+                          style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 10; -fx-border-color: #ddd; -fx-border-radius: 20; -fx-selection-bar: #6e2da125;"/>
+
+                <TextArea fx:id="commentField" prefHeight="60.0" promptText="Write a comment..."
+                          style="-fx-background-color: #f1f4f9; -fx-control-inner-background: #f1f4f9; -fx-background-radius: 15; -fx-padding: 8; -fx-border-width: 0; -fx-text-fill: #333;"/>
+                <Button text="Add Comment" onAction="#handleAddComment" prefWidth="Infinity"
+                        style="-fx-background-color: #6e2da1; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 15;"/>
+            </VBox>
+        </HBox>
+    </VBox>
 </AnchorPane>
+</StackPane>

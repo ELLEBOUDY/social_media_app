@@ -2,25 +2,39 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.Insets?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.socialmedia.controller.NotificationsController"
-            stylesheets="@styles.css"
-            styleClass="root-pane">
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.socialmedia.controller.NotificationsController"
+      spacing="20.0" style="-fx-background-color: transparent;">
 
-    <children>
-        <VBox alignment="CENTER" spacing="15" layoutX="50" layoutY="50">
-            <Label text="Notifications" styleClass="title-label"/>
+    <padding>
+        <Insets top="30" right="50" bottom="30" left="50"/>
+    </padding>
 
-            <ListView fx:id="notificationsListView" prefWidth="400" prefHeight="300"/>
+    <HBox alignment="CENTER_LEFT" spacing="15.0">
+        <Label text="Notifications" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #6e2da1;"/>
+        <Region HBox.hgrow="ALWAYS" />
+        <Button text="🔄 Refresh" onAction="#loadNotifications"
+                style="-fx-background-color: #f1f4f9; -fx-text-fill: #6e2da1; -fx-font-weight: bold; -fx-background-radius: 12; -fx-cursor: hand; -fx-padding: 8 15;"/>
+    </HBox>
 
-            <HBox spacing="10" alignment="CENTER">
-                <Button text="Refresh" onAction="#loadNotifications" styleClass="secondary-button"/>
-                <Button text="Mark Selected as Read" onAction="#handleMarkAsRead" styleClass="primary-button"/>
-                <Button text="Back to Menu" onAction="#goToMenu" styleClass="secondary-button"/>
-            </HBox>
+    <VBox spacing="15.0" VBox.vgrow="ALWAYS"
+          style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 25;">
+        <effect>
+            <DropShadow color="#00000008" radius="15" offsetY="5" />
+        </effect>
 
-            <Label fx:id="messageLabel" styleClass="error-label"/>
-        </VBox>
-    </children>
-</AnchorPane>
+        <ListView fx:id="notificationsListView" VBox.vgrow="ALWAYS"
+                  style="-fx-background-color: #f8f9fa; -fx-background-radius: 15; -fx-padding: 5; -fx-border-color: #eee; -fx-border-radius: 15; -fx-selection-bar: #6e2da115;"/>
+
+        <HBox alignment="CENTER_RIGHT" spacing="15.0">
+            <Label fx:id="messageLabel" style="-fx-text-fill: #e53e3e; -fx-font-weight: bold;" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Button text="Mark Selected as Read" onAction="#handleMarkAsRead"
+                    style="-fx-background-color: #6e2da1; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 15; -fx-padding: 10 25; -fx-cursor: hand;"/>
+        </HBox>
+    </VBox>
+
+</VBox>

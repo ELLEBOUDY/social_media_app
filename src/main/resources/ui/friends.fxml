@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.socialmedia.controller.FriendsController"
+      spacing="20.0" style="-fx-background-color: transparent;">
+
+    <padding>
+        <Insets top="30" right="50" bottom="30" left="50"/>
+    </padding>
+
+    <Label text="My Friends" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #333;"/>
+
+    <VBox spacing="15.0" VBox.vgrow="ALWAYS"
+          style="-fx-background-color: white; -fx-background-radius: 20; -fx-padding: 25;">
+        <effect>
+            <DropShadow color="#00000008" radius="15" offsetY="5" />
+        </effect>
+
+        <ListView fx:id="friendsListView" VBox.vgrow="ALWAYS"
+                  style="-fx-background-color: #f8f9fa; -fx-background-radius: 15; -fx-padding: 5; -fx-border-color: #eee; -fx-border-radius: 15; -fx-selection-bar: #6e2da115;"/>
+
+<!--        <HBox alignment="CENTER_RIGHT">-->
+<!--            <Button text="View Profile"-->
+<!--                    style="-fx-background-color: #6e2da1; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 12; -fx-padding: 10 20; -fx-cursor: hand;"/>-->
+<!--        </HBox>-->
+    </VBox>
+</VBox>

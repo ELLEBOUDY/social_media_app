@@ -2,20 +2,56 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.Insets?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.socialmedia.controller.MenuController"
-            stylesheets="@styles.css">
-    <children>
-        <Label text="Main Menu" layoutX="20" layoutY="20" style="-fx-font-size: 20px;"/>
+<HBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.socialmedia.controller.MenuController"
+      prefHeight="700.0" prefWidth="1100.0"
+      style="-fx-background-color: #f0f2f5;">
 
-        <Button fx:id="profileButton" text="Profile" layoutX="20" layoutY="60" onAction="#goToProfile"/>
-        <Button fx:id="newsFeedButton" text="News Feed" layoutX="20" layoutY="100" onAction="#goToNewsFeed"/>
-        <Button fx:id="notificationsButton" text="Notifications" layoutX="20" layoutY="140" onAction="#goToNotifications"/>
-        <Button fx:id="friendRequestsButton" text="Friend Requests" layoutX="20" layoutY="180" onAction="#goToFriendRequests"/>
-        <Button fx:id="searchButton" text="Search" layoutX="20" layoutY="220" onAction="#goToSearch"/>
-<!--        <Button fx:id="privacyButton" text="Privacy" layoutX="20" layoutY="260" onAction="#goToPrivacy"/>-->
-        <Button fx:id="logoutButton" text="Logout" layoutX="20" layoutY="260" onAction="#goToLogin"/>
-    </children>
-</AnchorPane>
+    <VBox prefWidth="280.0" spacing="15.0"
+          style="-fx-background-color: white; -fx-padding: 30 20 30 20; -fx-background-radius: 0 30 30 0;">
+        <effect>
+            <DropShadow color="#00000010" radius="20" offsetX="5" />
+        </effect>
 
+        <Label text="SocialApp"
+               style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #6e2da1; -fx-padding: 0 0 30 0;" />
+
+        <Button fx:id="newsFeedButton" text="🏠  News Feed" onAction="#goToNewsFeed"
+                prefWidth="Infinity" alignment="BASELINE_LEFT"
+                style="-fx-background-color: #6e2da115; -fx-text-fill: #6e2da1; -fx-font-weight: bold; -fx-padding: 12; -fx-background-radius: 12; -fx-cursor: hand;" />
+
+        <Button fx:id="profileButton" text="👤  Profile" onAction="#goToProfile"
+                prefWidth="Infinity" alignment="BASELINE_LEFT"
+                style="-fx-background-color: transparent; -fx-text-fill: #666; -fx-padding: 12; -fx-background-radius: 12; -fx-cursor: hand;" />
+
+        <Button fx:id="notificationsButton" text="🔔  Notifications" onAction="#goToNotifications"
+                prefWidth="Infinity" alignment="BASELINE_LEFT"
+                style="-fx-background-color: transparent; -fx-text-fill: #666; -fx-padding: 12; -fx-background-radius: 12; -fx-cursor: hand;" />
+
+        <Button fx:id="friendRequestsButton" text="👥  Friend Requests" onAction="#goToFriendRequests"
+                prefWidth="Infinity" alignment="BASELINE_LEFT"
+                style="-fx-background-color: transparent; -fx-text-fill: #666; -fx-padding: 12; -fx-background-radius: 12; -fx-cursor: hand;" />
+
+        <Button fx:id="friendsButton" text="⭐  Friends" onAction="#goToFriends"
+                prefWidth="Infinity" alignment="BASELINE_LEFT"
+                style="-fx-background-color: transparent; -fx-text-fill: #666; -fx-padding: 12; -fx-background-radius: 12; -fx-cursor: hand;" />
+
+        <Button fx:id="searchButton" text="🔍  Search" onAction="#goToSearch"
+                prefWidth="Infinity" alignment="BASELINE_LEFT"
+                style="-fx-background-color: transparent; -fx-text-fill: #666; -fx-padding: 12; -fx-background-radius: 12; -fx-cursor: hand;" />
+
+        <Region VBox.vgrow="ALWAYS" />
+
+        <Button fx:id="logoutButton" text="🚪  Logout" onAction="#goToLogin"
+                prefWidth="Infinity" alignment="BASELINE_LEFT"
+                style="-fx-background-color: #ffeded; -fx-text-fill: #e53e3e; -fx-font-weight: bold; -fx-padding: 12; -fx-background-radius: 12; -fx-cursor: hand;" />
+    </VBox>
+
+    <VBox fx:id="contentArea" HBox.hgrow="ALWAYS" style="-fx-background-color: transparent;">
+        <fx:include source="NewsFeed.fxml" />
+    </VBox>
+
+</HBox>

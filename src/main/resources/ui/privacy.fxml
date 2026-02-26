@@ -13,7 +13,7 @@
 
         <Button text="Save" layoutX="240" layoutY="60" onAction="#handleSave"/>
 
-        <Button text="Back to Menu" layoutX="20" layoutY="120" onAction="#goToMenu"/>
+<!--        <Button text="Back to Menu" layoutX="20" layoutY="120" onAction="#goToMenu"/>-->
 
         <Label fx:id="messageLabel" layoutX="20" layoutY="160" textFill="red"/>
     </children>

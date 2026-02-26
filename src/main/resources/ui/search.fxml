@@ -2,22 +2,61 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.paint.Color?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.socialmedia.controller.SearchController"
-            stylesheets="@styles.css">
-    <children>
-        <Label text="Search" layoutX="20" layoutY="20" style="-fx-font-size: 20px;"/>
+<StackPane xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.socialmedia.controller.SearchController"
+           style="-fx-background-color: #f0f2f5;"
+           prefHeight="700.0" prefWidth="1100.0">
 
-        <TextField fx:id="searchField" layoutX="20" layoutY="60" prefWidth="300" promptText="Enter keyword..."/>
+    <AnchorPane>
+        <VBox AnchorPane.topAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0"
+              spacing="25.0" style="-fx-background-color: white; -fx-background-radius: 30; -fx-padding: 40;">
 
-        <Button text="Search Users" layoutX="330" layoutY="60" onAction="#handleSearchUsers"/>
-        <Button text="Search Posts" layoutX="430" layoutY="60" onAction="#handleSearchPosts"/>
+            <effect>
+                <DropShadow color="#00000015" radius="25" offsetY="10" />
+            </effect>
 
-        <ListView fx:id="resultsListView" layoutX="20" layoutY="100" prefWidth="500" prefHeight="300"/>
+            <VBox spacing="15.0">
+                <HBox alignment="CENTER_LEFT" spacing="20.0">
+                    <Label text="Explore" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #6e2da1;"/>
+                    <Region HBox.hgrow="ALWAYS" />
+<!--                    <Button text="Back to Menu" onAction="#goToMenu"-->
+<!--                            style="-fx-background-color: transparent; -fx-border-color: #6e2da1; -fx-border-radius: 20; -fx-text-fill: #6e2da1; -fx-cursor: hand;"/>-->
+                </HBox>
 
-        <Button text="Back to Menu" layoutX="20" layoutY="420" onAction="#goToMenu"/>
+                <HBox spacing="15.0" alignment="CENTER_LEFT">
+                    <TextField fx:id="searchField" promptText="Search for people or stories..."
+                               HBox.hgrow="ALWAYS"
+                               style="-fx-background-color: #f1f4f9; -fx-background-radius: 15; -fx-padding: 15; -fx-border-width: 0; -fx-font-size: 14px;"/>
 
-        <Label fx:id="messageLabel" layoutX="20" layoutY="460" textFill="red"/>
-    </children>
-</AnchorPane>
+                    <Button text="🔍 Users" onAction="#handleSearchUsers"
+                            prefHeight="45.0" prefWidth="120.0"
+                            style="-fx-background-color: #6e2da1; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 15; -fx-cursor: hand;" />
+
+                    <Button text="📝 Posts" onAction="#handleSearchPosts"
+                            prefHeight="45.0" prefWidth="120.0"
+                            style="-fx-background-color: white; -fx-border-color: #6e2da1; -fx-border-radius: 15; -fx-text-fill: #6e2da1; -fx-font-weight: bold; -fx-cursor: hand;" />
+                </HBox>
+            </VBox>
+
+            <Separator />
+
+            <VBox spacing="10.0" VBox.vgrow="ALWAYS">
+                <Label text="Search Results" style="-fx-text-fill: #666; -fx-font-weight: bold; -fx-font-size: 16px;"/>
+
+                <ListView fx:id="resultsListView"
+                          VBox.vgrow="ALWAYS"
+                          prefHeight="350.0"
+                          style="-fx-background-color: transparent; -fx-background-insets: 0; -fx-padding: 5; -fx-border-color: #eee; -fx-border-radius: 15; -fx-background-radius: 15;"/>
+            </VBox>
+
+            <HBox alignment="CENTER_LEFT">
+                <Label fx:id="messageLabel" textFill="red" style="-fx-font-weight: bold;" />
+            </HBox>
+
+        </VBox>
+    </AnchorPane>
+</StackPane>
